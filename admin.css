@@ -1,0 +1,40 @@
+#contextual-help-link-wrap {
+	display: none !important;
+}
+#wpbody-content .wrap h2 {
+	height: 48px !important;
+}
+#wpbody-content .wrap h2:before {
+	content: "【会社ホームページ】" !important;
+}
+#icon-index {
+	background: url(../../../wp-content/login/wp-admin-dashboard-logo.png) !important;
+	width: 48px !important;
+	height: 48px !important;
+}
+#dashboard-widgets-wrap {
+	clear: both !important;
+}
+#wpfooter p#footer-left {
+	background: url(../../../wp-content/login/wp-admin-footer.png) no-repeat left top !important;
+	height: 28px; !important
+}
+#wpfooter span#footer-thankyou {
+	visibility: hidden !important;
+}
+#wpfooter p#footer-upgrade {
+	visibility: hidden !important;
+}
+#footer p#footer-left {
+	background: url(../../../wp-content/login/wp-admin-footer.png) no-repeat left top !important;
+	height: 28px; !important
+}
+#footer span#footer-thankyou {
+	visibility: hidden !important;
+}
+#footer p#footer-upgrade {
+	visibility: hidden !important;
+}
+textarea {
+	width: 90% !important;
+}
