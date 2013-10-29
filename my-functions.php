@@ -28,21 +28,20 @@ function ad_custom_head() {
 			<meta http-equiv="X-XSS-Protection" content="1;mode=block">
 		<![endif]-->
 		<!--[if lt IE 7]>
-			<script type="text/javascript" src="'.get_bloginfo('url').'/wp-content/js-custom/IE7.js"></script>
-			<script type="text/javascript" src="'.get_bloginfo('url').'/wp-content/js-custom/ie7-squish.js"></script>
-			<script type="text/javascript" src="'.get_bloginfo('url').'/wp-content/js-custom/minmax.js"></script>
+			<script type="text/javascript" src="'.get_bloginfo( 'url' ).'/wp-content/js-custom/IE7.js"></script>
+			<script type="text/javascript" src="'.get_bloginfo( 'url' ).'/wp-content/js-custom/ie7-squish.js"></script>
+			<script type="text/javascript" src="'.get_bloginfo( 'url' ).'/wp-content/js-custom/minmax.js"></script>
 		<![endif]-->
 		<!--[if lt IE 10]>
-			<script type="text/javascript" src="'.get_bloginfo('url').'/wp-content/js-custom/enhance.js"></script>
+			<script type="text/javascript" src="'.get_bloginfo( 'url' ).'/wp-content/js-custom/enhance.js"></script>
 			<script type="text/javascript">
 			enhance({
 				loadScripts: [
-					{src: "'.get_bloginfo('url').'/wp-content/js-custom/excanvas.js", iecondition: "all"}
+					{src: "'.get_bloginfo( 'url' ).'/wp-content/js-custom/excanvas.js", iecondition: "all"}
 				]
 			});
 			</script>
 		<![endif]-->
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		' ;
 	}
 }
@@ -89,7 +88,7 @@ function gs_attachment_template_redirect() {
     if ( is_attachment() ) { // 添付ファイルの個別ページなら
         global $wp_query;
         $wp_query->set_404();
-        status_header(404);
+        status_header( 404 );
     }
 }
 
@@ -121,11 +120,11 @@ add_action( 'wp_before_admin_bar_render', 'hide_before_admin_bar_render' );
 
 function hide_before_admin_bar_render() {
 	global $wp_admin_bar;
-	$wp_admin_bar->remove_menu('wp-logo');
-	$wp_admin_bar->remove_menu('comments');
-	$wp_admin_bar->remove_menu('new-content');
-	if (!current_user_can('administrator'))
-		$wp_admin_bar->remove_menu('my-sites');
+	$wp_admin_bar->remove_menu( 'wp-logo' );
+	$wp_admin_bar->remove_menu( 'comments' );
+	$wp_admin_bar->remove_menu( 'new-content' );
+	if ( !current_user_can( 'administrator' ) )
+		$wp_admin_bar->remove_menu( 'my-sites' );
 }
 
 
@@ -135,13 +134,13 @@ function hide_before_admin_bar_render() {
 if ( !current_user_can( 'edit_users' ) ) {
 	function remove_dashboard_widgets() {
 		global $wp_meta_boxes;
-		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']); // 最近のコメント
-		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']); // 被リンク
-		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']); // プラグイン
-		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']); // クイック投稿
-		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']); // 最近の下書き
-		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']); // WordPressブログ
-		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']); // WordPressフォーラム
+		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments'] ); // 最近のコメント
+		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'] ); // 被リンク
+		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins'] ); // プラグイン
+		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] ); // クイック投稿
+		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts'] ); // 最近の下書き
+		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] ); // WordPressブログ
+		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'] ); // WordPressフォーラム
 	}
 	add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
 }
@@ -151,12 +150,12 @@ if ( !current_user_can( 'edit_users' ) ) {
  * プロフィールから要らない項目を削除
  */
 function hide_profile_fields( $contactmethods ) {
-	unset($contactmethods['aim']);
-	unset($contactmethods['jabber']);
-	unset($contactmethods['yim']);
+	unset( $contactmethods['aim'] );
+	unset( $contactmethods['jabber'] );
+	unset( $contactmethods['yim'] );
 	return $contactmethods;
 }
-add_filter('user_contactmethods','hide_profile_fields');
+add_filter( 'user_contactmethods', 'hide_profile_fields' );
 
 
 /**
@@ -172,7 +171,7 @@ function remove_default_post_screen_metaboxes() {
 	remove_meta_box( 'revisionsdiv','post','normal' ); // リビジョン
 	remove_meta_box( 'tagsdiv-post_tag','post','normal' ); // タグ
 }
-add_action('admin_menu','remove_default_post_screen_metaboxes');
+add_action( 'admin_menu', 'remove_default_post_screen_metaboxes' );
 
 function remove_default_page_screen_metaboxes() {
 	remove_meta_box( 'postcustom','page','normal' ); // カスタムフィールド
@@ -182,7 +181,7 @@ function remove_default_page_screen_metaboxes() {
 	remove_meta_box( 'trackbacksdiv','page','normal' ); // トラックバック
 	remove_meta_box( 'revisionsdiv','page','normal' ); // リビジョン
 }
-add_action('admin_menu','remove_default_page_screen_metaboxes');
+add_action( 'admin_menu', 'remove_default_page_screen_metaboxes' );
 
 
 /**
@@ -190,51 +189,48 @@ add_action('admin_menu','remove_default_page_screen_metaboxes');
  */
 function limit_checkbox_amount() {
 echo '<script type="text/javascript">
-	//<![CDATA[
 	jQuery.noConflict();
 	jQuery(document).ready(function() {
 		jQuery("ul#categorychecklist").before("<p>1つだけ選択できます。</p>");
 			var count	=	jQuery("ul#categorychecklist li input[type=checkbox]:checked").length;
 			var not		=	jQuery("ul#categorychecklist li input[type=checkbox]").not(":checked");
 			if(count >= 1) { not.attr("disabled",true);}else{ not.attr("disabled",false);}
-
 		jQuery("ul#categorychecklist li input[type=checkbox]").click(function(){
 			var count	=	jQuery("ul#categorychecklist li input[type=checkbox]:checked").length;
 			var not		=	jQuery("ul#categorychecklist li input[type=checkbox]").not(":checked");
 			if(count >= 1) { not.attr("disabled",true);}else{ not.attr("disabled",false);}
 		});
 	});
-	//]]>
 	</script>';
 }
-add_action('admin_footer', 'limit_checkbox_amount');
+add_action( 'admin_footer', 'limit_checkbox_amount' );
 
 
 /**
  * 「投稿」、「ページ」に「Custom CSS File」メタボックスを追加
  */
-add_action('admin_menu', 'custom_css_file_hooks');
-add_action('save_post', 'save_custom_css_file');
-add_action('wp_head','insert_custom_css_file');
+add_action( 'admin_menu', 'custom_css_file_hooks' );
+add_action( 'save_post', 'save_custom_css_file' );
+add_action( 'wp_head','insert_custom_css_file' );
 function custom_css_file_hooks() {
-	add_meta_box('custom_css_file', 'Custom CSS File', 'custom_css_file_input', 'post', 'normal', 'high');
-	add_meta_box('custom_css_file', 'Custom CSS File', 'custom_css_file_input', 'page', 'normal', 'high');
+	add_meta_box( 'custom_css_file', 'Custom CSS File', 'custom_css_file_input', 'post', 'normal', 'high' );
+	add_meta_box( 'custom_css_file', 'Custom CSS File', 'custom_css_file_input', 'page', 'normal', 'high' );
 }
 function custom_css_file_input() {
 	global $post;
-	echo '<input type="hidden" name="custom_css_file_noncename" id="custom_css_file_noncename" value="'.wp_create_nonce('custom-css-file').'" />';
-	echo '<textarea name="custom_css_file" id="custom_css_file" rows="5" cols="30" style="width:100%;">'.get_post_meta($post->ID,'_custom_css_file',true).'</textarea>';
+	echo '<input type="hidden" name="custom_css_file_noncename" id="custom_css_file_noncename" value="'.wp_create_nonce( 'custom-css-file' ).'" />';
+	echo '<textarea name="custom_css_file" id="custom_css_file" rows="5" cols="30" style="width:100%;">'.get_post_meta( $post->ID, '_custom_css_file', true ).'</textarea>';
 }
-function save_custom_css_file($post_id) {
-	if (!wp_verify_nonce($_POST['custom_css_file_noncename'], 'custom-css-file')) return $post_id;
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $post_id;
+function save_custom_css_file( $post_id ) {
+	if ( !wp_verify_nonce( $_POST['custom_css_file_noncename'], 'custom-css-file' ) ) return $post_id;
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
 	$custom_css = $_POST['custom_css_file'];
-	update_post_meta($post_id, '_custom_css_file', $custom_css);
+	update_post_meta( $post_id, '_custom_css_file', $custom_css );
 }
 function insert_custom_css_file() {
-	if (is_page() || is_single()) {
-		if (have_posts()) : while (have_posts()) : the_post();
-			echo '<link type="text/css" href="'.get_post_meta(get_the_ID(), '_custom_css_file', true).'" rel="stylesheet" media="all" />';
+	if ( is_page() || is_single() ) {
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
+			echo '<link type="text/css" href="'.get_post_meta( get_the_ID(), '_custom_css_file', true ).'" rel="stylesheet" media="all" />';
 		endwhile; endif;
 		rewind_posts();
 	}
@@ -252,28 +248,28 @@ if ( !current_user_can( 'edit_users' ) ) {
 /**
  * 「投稿」、「ページ」に「Custom CSS」メタボックスを追加
  */
-add_action('admin_menu', 'custom_css_hooks');
-add_action('save_post', 'save_custom_css');
-add_action('wp_head','insert_custom_css');
+add_action( 'admin_menu', 'custom_css_hooks' );
+add_action( 'save_post', 'save_custom_css' );
+add_action( 'wp_head','insert_custom_css' );
 function custom_css_hooks() {
-	add_meta_box('custom_css', 'Custom CSS', 'custom_css_input', 'post', 'normal', 'high');
-	add_meta_box('custom_css', 'Custom CSS', 'custom_css_input', 'page', 'normal', 'high');
+	add_meta_box( 'custom_css', 'Custom CSS', 'custom_css_input', 'post', 'normal', 'high' );
+	add_meta_box( 'custom_css', 'Custom CSS', 'custom_css_input', 'page', 'normal', 'high' );
 }
 function custom_css_input() {
 	global $post;
-	echo '<input type="hidden" name="custom_css_noncename" id="custom_css_noncename" value="'.wp_create_nonce('custom-css').'" />';
-	echo '<textarea name="custom_css" id="custom_css" rows="5" cols="30" style="width:100%;">'.get_post_meta($post->ID,'_custom_css',true).'</textarea>';
+	echo '<input type="hidden" name="custom_css_noncename" id="custom_css_noncename" value="'.wp_create_nonce( 'custom-css' ).'" />';
+	echo '<textarea name="custom_css" id="custom_css" rows="5" cols="30" style="width:100%;">'.get_post_meta( $post->ID, '_custom_css', true ).'</textarea>';
 }
-function save_custom_css($post_id) {
-	if (!wp_verify_nonce($_POST['custom_css_noncename'], 'custom-css')) return $post_id;
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $post_id;
+function save_custom_css( $post_id ) {
+	if ( !wp_verify_nonce( $_POST['custom_css_noncename'], 'custom-css' ) ) return $post_id;
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
 	$custom_css = $_POST['custom_css'];
-	update_post_meta($post_id, '_custom_css', $custom_css);
+	update_post_meta( $post_id, '_custom_css', $custom_css );
 }
 function insert_custom_css() {
-	if (is_page() || is_single()) {
-		if (have_posts()) : while (have_posts()) : the_post();
-			echo '<style type="text/css">'.get_post_meta(get_the_ID(), '_custom_css', true).'</style>';
+	if ( is_page() || is_single() ) {
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
+			echo '<style type="text/css">'.get_post_meta( get_the_ID(), '_custom_css', true ).'</style>';
 		endwhile; endif;
 		rewind_posts();
 	}
@@ -291,28 +287,28 @@ if ( !current_user_can( 'edit_users' ) ) {
 /**
  * 「投稿」、「ページ」に「Custom JS File」メタボックスを追加
  */
-add_action('admin_menu', 'custom_js_file_hooks');
-add_action('save_post', 'save_custom_js_file');
-add_action('wp_head','insert_custom_js_file');
+add_action( 'admin_menu', 'custom_js_file_hooks' );
+add_action( 'save_post', 'save_custom_js_file' );
+add_action( 'wp_head','insert_custom_js_file' );
 function custom_js_file_hooks() {
-	add_meta_box('custom_js_file', 'Custom JS File', 'custom_js_file_input', 'post', 'normal', 'high');
-	add_meta_box('custom_js_file', 'Custom JS File', 'custom_js_file_input', 'page', 'normal', 'high');
+	add_meta_box( 'custom_js_file', 'Custom JS File', 'custom_js_file_input', 'post', 'normal', 'high' );
+	add_meta_box( 'custom_js_file', 'Custom JS File', 'custom_js_file_input', 'page', 'normal', 'high' );
 }
 function custom_js_file_input() {
 	global $post;
-	echo '<input type="hidden" name="custom_js_file_noncename" id="custom_js_file_noncename" value="'.wp_create_nonce('custom-js-file').'" />';
-	echo '<textarea name="custom_js_file" id="custom_js_file" rows="5" cols="30" style="width:100%;">'.get_post_meta($post->ID,'_custom_js_file',true).'</textarea>';
+	echo '<input type="hidden" name="custom_js_file_noncename" id="custom_js_file_noncename" value="'.wp_create_nonce( 'custom-js-file' ).'" />';
+	echo '<textarea name="custom_js_file" id="custom_js_file" rows="5" cols="30" style="width:100%;">'.get_post_meta( $post->ID, '_custom_js_file', true ).'</textarea>';
 }
-function save_custom_js_file($post_id) {
-	if (!wp_verify_nonce($_POST['custom_js_file_noncename'], 'custom-js-file')) return $post_id;
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $post_id;
+function save_custom_js_file( $post_id ) {
+	if ( !wp_verify_nonce( $_POST['custom_js_file_noncename'], 'custom-js-file' ) ) return $post_id;
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
 	$custom_js = $_POST['custom_js_file'];
-	update_post_meta($post_id, '_custom_js_file', $custom_js);
+	update_post_meta( $post_id, '_custom_js_file', $custom_js );
 }
 function insert_custom_js_file() {
-	if (is_page() || is_single()) {
-		if (have_posts()) : while (have_posts()) : the_post();
-			echo '<script type="text/javascript" src="'.get_post_meta(get_the_ID(), '_custom_js_file', true).'"></script>';
+	if ( is_page() || is_single() ) {
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
+			echo '<script type="text/javascript" src="'.get_post_meta( get_the_ID(), '_custom_js_file', true ).'"></script>';
 		endwhile; endif;
 		rewind_posts();
 	}
@@ -330,28 +326,28 @@ if ( !current_user_can( 'edit_users' ) ) {
 /**
  * 「投稿」、「ページ」に「Custom JS」メタボックスを追加
  */
-add_action('admin_menu', 'custom_js_hooks');
-add_action('save_post', 'save_custom_js');
-add_action('wp_head','insert_custom_js');
+add_action( 'admin_menu', 'custom_js_hooks' );
+add_action( 'save_post', 'save_custom_js' );
+add_action( 'wp_head','insert_custom_js' );
 function custom_js_hooks() {
-	add_meta_box('custom_js', 'Custom JS', 'custom_js_input', 'post', 'normal', 'high');
-	add_meta_box('custom_js', 'Custom JS', 'custom_js_input', 'page', 'normal', 'high');
+	add_meta_box( 'custom_js', 'Custom JS', 'custom_js_input', 'post', 'normal', 'high' );
+	add_meta_box( 'custom_js', 'Custom JS', 'custom_js_input', 'page', 'normal', 'high' );
 }
 function custom_js_input() {
 	global $post;
-	echo '<input type="hidden" name="custom_js_noncename" id="custom_js_noncename" value="'.wp_create_nonce('custom-js').'" />';
-	echo '<textarea name="custom_js" id="custom_js" rows="5" cols="30" style="width:100%;">'.get_post_meta($post->ID,'_custom_js',true).'</textarea>';
+	echo '<input type="hidden" name="custom_js_noncename" id="custom_js_noncename" value="'.wp_create_nonce( 'custom-js' ).'" />';
+	echo '<textarea name="custom_js" id="custom_js" rows="5" cols="30" style="width:100%;">'.get_post_meta( $post->ID, '_custom_js', true ).'</textarea>';
 }
-function save_custom_js($post_id) {
-	if (!wp_verify_nonce($_POST['custom_js_noncename'], 'custom-js')) return $post_id;
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $post_id;
+function save_custom_js( $post_id ) {
+	if ( !wp_verify_nonce( $_POST['custom_js_noncename'], 'custom-js' ) ) return $post_id;
+	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
 	$custom_js = $_POST['custom_js'];
-	update_post_meta($post_id, '_custom_js', $custom_js);
+	update_post_meta( $post_id, '_custom_js', $custom_js );
 }
 function insert_custom_js() {
-	if (is_page() || is_single()) {
-		if (have_posts()) : while (have_posts()) : the_post();
-			echo '<script type="text/javascript">'.get_post_meta(get_the_ID(), '_custom_js', true).'</script>';
+	if ( is_page() || is_single() ) {
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
+			echo '<script type="text/javascript">'.get_post_meta( get_the_ID(), '_custom_js', true ).'</script>';
 		endwhile; endif;
 		rewind_posts();
 	}
@@ -370,7 +366,7 @@ if ( !current_user_can( 'edit_users' ) ) {
  * moreリンクの#を無効化
  */
 function custom_content_more_link( $output ) {
-	$output = preg_replace('/#more-[\d]+/i', '', $output );
+	$output = preg_replace( '/#more-[\d]+/i', '', $output );
 	return $output;
 }
 add_filter( 'the_content_more_link', 'custom_content_more_link' );
