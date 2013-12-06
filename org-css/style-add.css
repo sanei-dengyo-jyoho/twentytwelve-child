@@ -124,6 +124,10 @@ span.block.smaller.italic {
 	list-style: lower-latin;
 }
 
+.reveal li {
+	margin-left: 0;
+}
+
 
 .reveal h2 ol {
 	margin-left: 30px;
@@ -494,18 +498,60 @@ span.block.smaller.italic {
 
 
 
+/******************************************************************************/
+/* Plugin Override */
+/******************************************************************************/
+/**************************************/
+/* Suffusion Shortcode */
+/**************************************/
+/* Columns */
+.suf-multic {
+	margin: 0 !important;
+
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	-ms-box-sizing: border-box !important;
+	-o-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+}
+
+.suf-multic:before,
+.suf-multic:after {
+	display: block !important;
+	content: " " !important;
+}
+
+.suf-multic:after {
+	clear: both !important;
+}
+
+.suf-multic .suf-mc-col {
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	-ms-box-sizing: border-box !important;
+	-o-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+}
+
+.suf-multic .suf-mc-col:last-child {
+	clear: right !important;
+}
+
+
+
+
 @media print {
 
-#social-buttons {
-	display: none !important;
-	width: 0 !important;
-	height: 0 !important;
-}
+	#social-buttons {
+		display: none !important;
+		width: 0 !important;
+		height: 0 !important;
+	}
 
-.back-to-beginnings {
-	display: none !important;
-	width: 0 !important;
-	height: 0 !important;
-}
+	.back-to-beginnings {
+		display: none !important;
+		width: 0 !important;
+		height: 0 !important;
+	}
 
 }

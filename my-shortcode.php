@@ -6,10 +6,10 @@
 // div class="@"
 //******************************************************************************
 function sc_block( $atts, $content = null ) {
-	extract( shortcode_atts( array(
+	extract(shortcode_atts(array(
 			'class' => '',
 			'style' => '',
-	), $atts ) );
+	), $atts));
 
 	$ret  = '';
 	$ret .= '<div class="'.$class.'" style="'.$style.'">';
@@ -25,10 +25,10 @@ add_shortcode( 'block', 'sc_block' );
 // ol Title
 //******************************************************************************
 function sc_title( $atts, $content = null ) {
-	extract( shortcode_atts( array(
+	extract(shortcode_atts(array(
 			'start' => '1',
 			'tagname' => 'h2',
-	), $atts ) );
+	), $atts));
 
 	$ret  = '';
 	$ret .= '<'.$tagname.'>';
@@ -46,10 +46,10 @@ add_shortcode( 'title', 'sc_title' );
 // Google Charts
 //******************************************************************************
 function sc_gchart( $atts ) {
-	extract( shortcode_atts( array(
+	extract(shortcode_atts(array(
 			'id' => 'gchart_div',
 			'style' => '',
-	), $atts ) );
+	), $atts));
 	$styledata = '';
 	if ( $style != '' ) {
 		$styledata = ' style="'.$style.'"';
@@ -60,17 +60,16 @@ add_shortcode( 'gchart', 'sc_gchart' );
 
 
 //******************************************************************************
-//  Java Scripts Include
+//  Java Scripts source Link
 //******************************************************************************
-// Java Scripts Source Link
-function sc_jsInclude( $atts ) {
-	extract( shortcode_atts( array(
+function sc_js_include( $atts ) {
+	extract(shortcode_atts(array(
 			'js' => '',
 			'delim' => '::::',
-	), $atts ) );
+	), $atts));
 
-	$ret = '';
 	$str = $js;
+	$ret = '';
 
 	if ( $str != '' ) {
 		if ( $delim != '' ) {
@@ -86,23 +85,22 @@ function sc_jsInclude( $atts ) {
 			// タグを組み立てる
 			$count = count( $array );
 			for ( $i = 0; $i < $count; $i++ ) {
-				$ret .= '<script type="text/javascript" src="'.$array[$i].'"></script>';
+				$ret .= '<script type="text/javascript" src="'.$array[ $i ].'"></script>';
 			}
 		}
-		return $ret;
 	}
+	return $ret;
 }
 
-add_shortcode( 'jsInclude', 'sc_jsInclude' );
+add_shortcode( 'js_include', 'sc_js_include' );
 
 
-// Java Scripts Source Embed
-function sc_jsScript( $atts, $content = null ) {
-	extract( shortcode_atts( array(
-	), $atts ) );
-
-	$ret = '';
+//******************************************************************************
+//  Java Scripts Embed
+//******************************************************************************
+function sc_js_embed( $atts, $content = null ) {
 	$str = $content;
+	$ret = '';
 
 	if ( $str != '' ) {
 		$ret .= "<script type='text/javascript'>"."\n";
@@ -114,10 +112,9 @@ function sc_jsScript( $atts, $content = null ) {
 		$str  = str_replace( "<br />", "", $str );
 		$ret .= $str."\n";
 		$ret .= "</script>"."\n";
-		
-		return $ret;
 	}
+	return $ret;
 }
 
-add_shortcode( 'jsScript', 'sc_jsScript' );
+add_shortcode( 'js_embed', 'sc_js_embed' );
 ?>
