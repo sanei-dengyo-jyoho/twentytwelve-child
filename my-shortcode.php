@@ -1,19 +1,26 @@
 <?php
-/**
- * Additional Shortcodes
- */
 //******************************************************************************
 // div class="@"
 //******************************************************************************
 function sc_block( $atts, $content = null ) {
 	extract(shortcode_atts(array(
-			'class' => '',
-			'style' => '',
+			'class'	=>	'',
+			'style'	=>	'',
 	), $atts));
 
+	$classdata = '';
+	if ( $class != '' ) {
+		$classdata = ' class="' . $class . '"';
+	}
+	$styledata = '';
+	if ( $style != '' ) {
+		$styledata = ' style="' . $style . '"';
+	}
+
+	$content = do_shortcode( $content );
 	$ret  = '';
-	$ret .= '<div class="'.$class.'" style="'.$style.'">';
-	$ret .= do_shortcode( $content );
+	$ret .= '<div'. $classdata . $styledata . '>';
+	$ret .= $content;
 	$ret .= '</div>';
 	return $ret;
 }
@@ -26,16 +33,15 @@ add_shortcode( 'block', 'sc_block' );
 //******************************************************************************
 function sc_title( $atts, $content = null ) {
 	extract(shortcode_atts(array(
-			'start' => '1',
-			'tagname' => 'h2',
+			'start'		=>	'1',
+			'tagname'	=>	'h2',
 	), $atts));
 
+	$content = do_shortcode( $content );
 	$ret  = '';
-	$ret .= '<'.$tagname.'>';
-	$ret .= '<ol start="'.$start.'"><li>';
-	$ret .= do_shortcode( $content );
-	$ret .= '</li></ol>';
-	$ret .= '</'.$tagname.'>';
+	$ret .= '<' . $tagname . '>';
+	$ret .= '<ol start="' . $start . '"><li>' . $content . '</li></ol>';
+	$ret .= '</' . $tagname . '>';
 	return $ret;
 }
 
@@ -47,15 +53,17 @@ add_shortcode( 'title', 'sc_title' );
 //******************************************************************************
 function sc_gchart( $atts ) {
 	extract(shortcode_atts(array(
-			'id' => 'gchart_div',
-			'style' => '',
+			'id'	=>	'gchart_div',
+			'style'	=>	'',
 	), $atts));
+
 	$styledata = '';
 	if ( $style != '' ) {
-		$styledata = ' style="'.$style.'"';
+		$styledata = ' style="' . $style . '"';
 	}
-	return '<div id="'.$id.'"'.$styledata.'></div>';
+	return '<div id="' . $id . '"' . $styledata . '></div>';
 }
+
 add_shortcode( 'gchart', 'sc_gchart' );
 
 
@@ -64,8 +72,8 @@ add_shortcode( 'gchart', 'sc_gchart' );
 //******************************************************************************
 function sc_js_include( $atts ) {
 	extract(shortcode_atts(array(
-			'js' => '',
-			'delim' => '::::',
+			'js'	=>	'',
+			'delim'	=>	'::::',
 	), $atts));
 
 	$str = $js;
@@ -85,7 +93,7 @@ function sc_js_include( $atts ) {
 			// タグを組み立てる
 			$count = count( $array );
 			for ( $i = 0; $i < $count; $i++ ) {
-				$ret .= '<script type="text/javascript" src="'.$array[ $i ].'"></script>';
+				$ret .= '<script type="text/javascript" src="' . $array[$i] . '"></script>';
 			}
 		}
 	}
@@ -103,18 +111,17 @@ function sc_js_embed( $atts, $content = null ) {
 	$ret = '';
 
 	if ( $str != '' ) {
-		$ret .= "<script type='text/javascript'>"."\n";
+		$ret .= "<script type='text/javascript'>" . "\n";
 		$str  = str_replace( "&#8216;", "'", $str );
 		$str  = str_replace( "&#8217;", "'", $str );
 		$str  = str_replace( "&#8242;", "'", $str );
 		$str  = str_replace( "&gt;", ">", $str );
 		$str  = str_replace( "&lt;", "<", $str );
 		$str  = str_replace( "<br />", "", $str );
-		$ret .= $str."\n";
-		$ret .= "</script>"."\n";
+		$ret .= $str . "\n";
+		$ret .= "</script>" . "\n";
 	}
 	return $ret;
 }
 
 add_shortcode( 'js_embed', 'sc_js_embed' );
-?>

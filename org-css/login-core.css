@@ -1,8 +1,15 @@
-html { overflow-y:scroll; }
-*html { overflow-y:scroll; }	/* IE6 Only */
-*+html { overflow-y:scroll; }	/* IE7 Only */
+html {
+	overflow-y:scroll;
+}
+/* IE7 Only */
+*+html {
+	overflow-y:scroll;
+}
 
-html, body { height: 100%; }
+html,
+body {
+	height: 100%;
+}
 
 
 #login {
@@ -15,12 +22,8 @@ html, body { height: 100%; }
 .message {
 	position: relative;
 
-	-webkit-opacity: .9;
-	-moz-opacity: .9;
-	-ms-opacity: .9;
-	-o-opacity: .9;
-	opacity: .9;
-	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+	filter: alpha(opacity=90);
+	opacity: 0.9;
 }
 
 
@@ -43,9 +46,6 @@ html, body { height: 100%; }
 	position: relative;
 
 	-webkit-transform: scale(1.0333, 1.0333);
-	-moz-transform: scale(1.0333, 1.0333);
-	-ms-transform: scale(1.0333, 1.0333);
-	-o-transform: scale(1.0333, 1.0333);
 	transform: scale(1.0333, 1.0333);
 }
 
@@ -56,43 +56,18 @@ html, body { height: 100%; }
 	background: #f5f5f5;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #e6e6e6));
 	background: -webkit-linear-gradient(top, #f5f5f5 0%, #e6e6e6 100%);
-	background: -moz-linear-gradient(top, #f5f5f5 0%, #e6e6e6 100%);
-	background: -ms-linear-gradient(top, #f5f5f5 0%, #e6e6e6 100%);
-	background: -o-linear-gradient(top, #f5f5f5 0%, #e6e6e6 100%);
 	background: linear-gradient(top, #f5f5f5 0%, #e6e6e6 100%);
-	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorstr='#fff5f5f5', endColorstr='#ffe6e6e6');
 	border-color: #dcdcdc;
 
-	-webkit-border-radius: 12px;
-	-moz-border-radius: 12px;
-	-ms-border-radius: 12px;
-	-o-border-radius: 12px;
-	border-radius: 12px;
-
-	-webkit-border-top-right-radius: 3px;
-	-moz-border-radius-topright: 3px;
-	-ms-border-top-right-radius: 3px;
-	-o-border-top-right-radius: 3px;
-	border-top-right-radius: 3px;
-
-	-webkit-border-bottom-left-radius: 3px;
-	-moz-border-radius-bottomleft: 3px;
-	-ms-border-bottom-left-radius: 3px;
-	-o-border-bottom-left-radius: 3px;
-	border-bottom-left-radius: 3px;
+	/*border-radius: 12px;*/
+	/*border-top-right-radius: 3px;*/
+	/*border-bottom-left-radius: 3px;*/
 
 	-webkit-box-shadow: 1px 1px 15px -2px #222222, inset 0px 0px 0px 1px #dcdcdc;
-	-moz-box-shadow: 1px 1px 15px -2px #222222, inset 0px 0px 0px 1px #dcdcdc;
-	-ms-box-shadow: 1px 1px 15px -2px #222222, inset 0px 0px 0px 1px #dcdcdc;
-	-o-box-shadow: 1px 1px 15px -2px #222222, inset 0px 0px 0px 1px #dcdcdc;
 	box-shadow: 1px 1px 15px -2px #222222, inset 0px 0px 0px 1px #dcdcdc;
 
-	-webkit-opacity: .9;
-	-moz-opacity: .9;
-	-ms-opacity: .9;
-	-o-opacity: .9;
-	opacity: .9;
-	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+	filter: alpha(opacity=90);
+	opacity: 0.9;
 }
 
 
@@ -115,26 +90,8 @@ html, body { height: 100%; }
 .login #backtoblog:hover {
 	position: relative;
 
-	-webkit-animation-name: shakey;
-	-webkit-animation-timing-function: linear;
-	-webkit-animation-iteration-count: once;
-	-webkit-animation-duration: 300ms;
-	-moz-animation-name: shakey;
-	-moz-animation-timing-function: linear;
-	-moz-animation-iteration-count: once;
-	-moz-animation-duration: 300ms;
-	-ms-animation-name: shakey;
-	-ms-animation-timing-function: linear;
-	-ms-animation-iteration-count: once;
-	-ms-animation-duration: 300ms;
-	-o-animation-name: shakey;
-	-o-animation-timing-function: linear;
-	-o-animation-iteration-count: once;
-	-o-animation-duration: 300ms;
-	animation-name: shakey;
-	animation-timing-function: linear;
-	animation-iteration-count: once;
-	animation-duration: 300ms;
+	-webkit-animation: shakey 0.3s linear;
+	animation: shakey 0.3s linear;
 }
 
 
@@ -146,22 +103,12 @@ html, body { height: 100%; }
 	border: 1px solid #dddddd !important;
 	padding: 3px 5px !important;
 
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
-	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
-	-ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
-	-o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
-
 	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s !important;
-	-moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s !important;
-	-ms-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s !important;
-	-o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s !important;
 	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s !important;
 
-	-webkit-border-radius: 4px !important;
-	-moz-border-radius: 4px !important;
-	-ms-border-radius: 4px !important;
-	-o-border-radius: 4px !important;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+
 	border-radius: 4px !important;
 }
 
@@ -172,9 +119,6 @@ html, body { height: 100%; }
 	outline: 0 !important;
 
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6) !important;
-	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6) !important;
-	-ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6) !important;
-	-o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6) !important;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6) !important;
 }
 
@@ -188,45 +132,26 @@ html, body { height: 100%; }
 	border-color: #357ebd !important;
 
 	-webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
-	-moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
-	-ms-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
-	-o-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
 
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075) !important;
-	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075) !important;
-	-ms-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075) !important;
-	-o-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075) !important;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075) !important;
 
 	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#428bca), to(#2d6ca2)) !important;
 	background-image: -webkit-linear-gradient(top, #428bca 0%, #2d6ca2 100%) !important;
-	background-image: -moz-linear-gradient(top, #428bca 0%, #2d6ca2 100%) !important;
-	background-image: -ms-linear-gradient(top, #428bca 0%, #2d6ca2 100%) !important;
-	background-image: -o-linear-gradient(top, #428bca 0%, #2d6ca2 100%) !important;
 	background-image: linear-gradient(to bottom, #428bca 0%, #2d6ca2 100%) !important;
 	background-repeat: repeat-x !important;
 	border-color: #2b669a !important;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff2d6ca2', GradientType=0) !important;
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false) !important;
 
-	-webkit-border-radius: 4px !important;
-	-moz-border-radius: 4px !important;
-	-ms-border-radius: 4px !important;
-	-o-border-radius: 4px !important;
 	border-radius: 4px !important;
 
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	-o-user-select: none;
 	user-select: none;
 
-	-webkit-transition: all .2s linear !important;
-	-moz-transition: all .2s linear !important;
-	-ms-transition: all .2s linear !important;
-	-o-transition: all .2s linear !important;
-	transition: all .2s linear !important;
+	-webkit-transition: all 0.2s linear !important;
+	transition: all 0.2s linear !important;
 }
 
 .login form input[type="submit"]:hover,
@@ -241,9 +166,6 @@ html, body { height: 100%; }
 
 .login form input[type="submit"]:active {
 	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
-	-moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
-	-ms-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
-	-o-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
 	box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
 
 	color: #ffffff !important;
@@ -253,3 +175,50 @@ html, body { height: 100%; }
 	background-color: #2d6ca2 !important;
 	border-color: #2b669a !important;
 }
+
+
+/******************************************************************************/
+/* Animation */
+/******************************************************************************/
+@-webkit-keyframes shakey {
+	from {
+		left: 0;
+	}
+	10% {
+		left: -3px;
+	}
+	25% {
+		left: 3px;
+	}
+	50% {
+		left: -3px;
+	}
+	75% {
+		left: 3px;
+	}
+	to {
+		left: 0;
+	}
+}
+
+@keyframes shakey {
+	from {
+		left: 0;
+	}
+	10% {
+		left: -3px;
+	}
+	25% {
+		left: 3px;
+	}
+	50% {
+		left: -3px;
+	}
+	75% {
+		left: 3px;
+	}
+	to {
+		left: 0;
+	}
+}
+
